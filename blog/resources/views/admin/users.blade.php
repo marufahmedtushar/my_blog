@@ -54,7 +54,13 @@
                                         </td>
                                         <td><a class="btn btn-success btn-sm" href="/userroleedit/{{$user->id}}">Edit</a></td>
 
-                                        <td><a class="btn btn-danger btn-sm" href="">Delete</a></td>
+                                        <td>
+                                            <form action="/userdelete/{{$user->id}}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('delete') }}
+                                        <button class="btn btn-danger">Delete </button>
+                                            </form>
+                                        </td>
                                     </tr>
 
 

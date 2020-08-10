@@ -21,6 +21,7 @@
     <link href="{{ asset('lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
     <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
     <link href="{{ asset('lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <!-- Main Stylesheet File -->
     <link href="{{ asset('css/style.css')}}" rel="stylesheet">
@@ -47,18 +48,18 @@
         <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll" href="#">My Blog</a>
+                    <a class="nav-link js-scroll" href="/">My Blog</a>
                 </li>
                 <li class="nav-item">
 
                     <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="btn btn-primary" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="btn btn-primary" href="/login-new">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="btn btn-primary" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="btn btn-primary" href="/register-new">{{ __('Register') }}</a>
                         </li>
                     @endif
                 @else
@@ -116,16 +117,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
+                @foreach($post as $posts)
                 <div class="post-box">
+
                     <div class="post-thumb">
-                        <img src="img/post-1.jpg" class="img-fluid" alt="">
+                        <img src="/storage/cover_images/{{$posts->cover_image}}" class="img-fluid" alt="">
                     </div>
                     <div class="post-meta">
-                        <h1 class="article-title">Lorem ipsum dolor sit amet consec tetur adipisicing</h1>
+{{--                        <h1 class="article-title">{{$posts->title}}</h1>--}}
+                        <h3><a class="nav-link" href="/postsdetails/{{$posts->id}}">{{$posts->title}}</a></h3>
                         <ul>
                             <li>
-                                <span class="ion-ios-person"></span>
-                                <a href="#">Jason London</a>
+
+                                <h6 class="far fa-clock">{{$posts->created_at}}</h6>
                             </li>
                             <li>
                                 <span class="ion-pricetag"></span>
@@ -139,112 +143,24 @@
                     </div>
                     <div class="article-content">
                         <p>
-                            Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum
-                            porta. Quisque velit
-                            nisi, pretium ut lacinia in, elementum id enim. Praesent sapien massa, convallis a pellentesque
-                            nec, egestas non nisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-                            cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
-                            Nulla quis lorem ut libero malesuada feugiat.
+                            {{ Str::limit($posts->body, 200, '[....]')}}
                         </p>
-                        <p>
-                            Nulla porttitor accumsan tincidunt. Cras ultricies ligula sed magna dictum porta. Mauris blandit
-                            aliquet elit, eget tincidunt
-                            nibh pulvinar a. Cras ultricies ligula sed magna dictum porta. Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Donec sollicitudin molestie malesuada.
-                        </p>
-                        <p>
-                            Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit. Praesent
-                            sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Curabitur arcu erat, accumsan id imperdiet et, porttitor at
-                            sem. Donec rutrum congue leo eget malesuada.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis lorem ut libero malesuada feugiat.
-                            Curabitur arcu erat,
-                            accumsan id imperdiet et, porttitor at sem. Vivamus suscipit tortor eget felis porttitor
-                            volutpat. Vivamus suscipit tortor eget felis porttitor volutpat. Quisque velit nisi, pretium
-                            ut lacinia in, elementum id enim.
-                        </p>
+
+
+
                         <blockquote class="blockquote">
                             <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                         </blockquote>
-                        <p>
-                            Nulla porttitor accumsan tincidunt. Cras ultricies ligula sed magna dictum porta. Mauris blandit
-                            aliquet elit, eget tincidunt
-                            nibh pulvinar a. Cras ultricies ligula sed magna dictum porta. Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Donec sollicitudin molestie malesuada.
-                        </p>
+
                     </div>
+
                 </div>
-                <div class="box-comments">
-                    <div class="title-box-2">
-                        <h4 class="title-comments title-left">Comments (34)</h4>
+                @endforeach
+
+                    <div class="container">
+                        {{$post->links()}}
+
                     </div>
-                    <ul class="list-comments">
-                        <li>
-                            <div class="comment-avatar">
-                                <img src="img/testimonial-2.jpg" alt="">
-                            </div>
-                            <div class="comment-details">
-                                <h4 class="comment-author">Oliver Colmenares</h4>
-                                <span>18 Sep 2017</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
-                                    ipsam temporibus maiores
-                                    quae natus libero optio, at qui beatae ducimus placeat debitis voluptates amet corporis.
-                                </p>
-                                <a href="3">Reply</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="comment-avatar">
-                                <img src="img/testimonial-4.jpg" alt="">
-                            </div>
-                            <div class="comment-details">
-                                <h4 class="comment-author">Carmen Vegas</h4>
-                                <span>18 Sep 2017</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
-                                    ipsam temporibus maiores
-                                    quae natus libero optio, at qui beatae ducimus placeat debitis voluptates amet corporis,
-                                    veritatis deserunt.
-                                </p>
-                                <a href="3">Reply</a>
-                            </div>
-                        </li>
-                        <li class="comment-children">
-                            <div class="comment-avatar">
-                                <img src="img/testimonial-2.jpg" alt="">
-                            </div>
-                            <div class="comment-details">
-                                <h4 class="comment-author">Oliver Colmenares</h4>
-                                <span>18 Sep 2017</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
-                                    ipsam temporibus maiores
-                                    quae.
-                                </p>
-                                <a href="3">Reply</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="comment-avatar">
-                                <img src="img/testimonial-2.jpg" alt="">
-                            </div>
-                            <div class="comment-details">
-                                <h4 class="comment-author">Oliver Colmenares</h4>
-                                <span>18 Sep 2017</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
-                                    ipsam temporibus maiores
-                                    quae natus libero optio.
-                                </p>
-                                <a href="3">Reply</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
                 <div class="form-comments">
                     <div class="title-box-2">
                         <h3 class="title-left">
