@@ -3,13 +3,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>DevFolio Bootstrap Template</title>
+    <title>My Blog | Post Details</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicons -->
-    <link href="{{ asset('img/favicon.png')}}" rel="shortcut icon">
+    <link href="{{ asset('img/img8.ico')}} " rel="shortcut icon">
 
 
     <!-- Bootstrap CSS File -->
@@ -227,9 +227,10 @@
                 <div class="widget-sidebar sidebar-search">
                     <h5 class="sidebar-title">Search</h5>
                     <div class="sidebar-content">
-                        <form>
+                        <form action="/search" method="get" role="search">
+    {{ csrf_field() }}
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+                                <input type="text" name="q" class="form-control" placeholder="Search for..." aria-label="Search for...">
                                 <span class="input-group-btn">
                     <button class="btn btn-secondary btn-search" type="button">
                       <span class="ion-android-search"></span>
@@ -237,28 +238,6 @@
                   </span>
                             </div>
                         </form>
-                    </div>
-                </div>
-                <div class="widget-sidebar">
-                    <h5 class="sidebar-title">Recent Post</h5>
-                    <div class="sidebar-content">
-                        <ul class="list-sidebar">
-                            <li>
-                                <a href="#">Atque placeat maiores.</a>
-                            </li>
-                            <li>
-                                <a href="#">Lorem ipsum dolor sit amet consectetur</a>
-                            </li>
-                            <li>
-                                <a href="#">Nam quo autem exercitationem.</a>
-                            </li>
-                            <li>
-                                <a href="#">Atque placeat maiores nam quo autem</a>
-                            </li>
-                            <li>
-                                <a href="#">Nam quo autem exercitationem.</a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
                 <div class="widget-sidebar">

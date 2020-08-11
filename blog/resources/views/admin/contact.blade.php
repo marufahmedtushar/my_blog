@@ -1,10 +1,10 @@
 @extends('layouts.master')
-@section('title','My Blog | Admin | Posts')
+@section('title','My Blog | Admin | Peoples')
 
 
 
 
-@section('header','List of Posts')
+@section('header','List of Peoples')
 @section('content')
 
 
@@ -16,7 +16,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header ">
-                        <a class="btn btn-success" href="/createposts">Create Posts</a>
+                        
                     </div>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -34,21 +34,19 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                 <th>#</th>
-                                <th>Title</th>
-                                <th>Created at</th>
+                                <th>Name</th>
                                 </thead>
                                 <tbody>
 
-                                @foreach($posts as $post)
+                                @foreach($contacts as $contact)
 
                                     <tr>
-                                        <th scope="row">{{$post->id}}</th>
-                                        <td>{{$post->title}}</td>
-                                        <td>{{$post->created_at}}</td>
+                                        <th scope="row">{{$contact->id}}</th>
+                                        <td>{{$contact->name}}</td>
 
-                                        <td><a class="btn btn-success btn-sm" href="/postedit/{{$post->id}}/edit">Edit</a></td>
+                                        <td><a class="btn btn-success btn-sm" href="/contactview/{{$contact->id}}">View</a></td>
 
-                                        <td><form action="/postdelete/{{$post->id}}" method="POST">
+                                        <td><form action="/contactdelete/{{$contact->id}}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('delete') }}
                                         <button class="btn btn-danger btn-sm">Delete </button>

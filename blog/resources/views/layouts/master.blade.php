@@ -19,8 +19,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('admin/assets/img/apple-icon.png')}}">
-    <link rel="icon" type="image/png" href="{{asset('admin/assets/img/favicon.png')}}">
+    <link href="{{ asset('img/img8.ico')}} " rel="shortcut icon">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>@yield('title')</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -64,6 +63,21 @@
                         <p>Posts</p>
                     </a>
                 </li>
+
+                <li class="{{ 'users' == request()->path() ? 'active' : '' }}">
+                    <a href="/users">
+                        <i class="now-ui-icons users_single-02"></i>
+                        <p>User's</p>
+                    </a>
+                </li>
+
+                <li class="{{ 'contact' == request()->path() ? 'active' : '' }}">
+                    <a href="/contact">
+                        <i class="fas fa-id-badge"></i>
+                        <p>People's</p>
+                    </a>
+                </li>
+                
                 <li>
                     <a href="./map.html">
                         <i class="now-ui-icons location_map-big"></i>
@@ -76,12 +90,7 @@
                         <p>Notifications</p>
                     </a>
                 </li>
-                <li class="{{ 'users' == request()->path() ? 'active' : '' }}">
-                    <a href="/users">
-                        <i class="now-ui-icons users_single-02"></i>
-                        <p>User's'</p>
-                    </a>
-                </li>
+                
                 <li class="">
                     <a href="">
                         <i class="now-ui-icons design_bullet-list-67"></i>

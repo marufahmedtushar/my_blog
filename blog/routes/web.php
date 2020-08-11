@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Post;
+use Illuminate\Support\Facades\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,10 @@ Route::group(['middleware' => ['auth','admin']],function() {
     Route::delete('/userdelete/{id}','AdminController@userdelete');
     Route::delete('/postdelete/{id}','AdminController@postdelete');
 
+    Route::get('/contact','AdminController@contactlist');
+    Route::get('/contactview/{id}','AdminController@contactview');
+    Route::delete('/contactdelete/{id}','AdminController@contactdelete');
+
 
 });
 
@@ -39,10 +45,14 @@ Auth::routes();
 
 Route::get('/','IndexController@index');
 Route::get('/postsdetails/{id}','IndexController@postsdetails');
+Route::get('/searchpostdetails/{id}','IndexController@postsdetails');
 Route::get('/register-new', function () {
     return view('newregister');
 });
 Route::get('/login-new', function () {
     return view('newlogin');
 });
+Route::get('/search','IndexController@search');
+Route::post('/contact','IndexController@contact');
+
 

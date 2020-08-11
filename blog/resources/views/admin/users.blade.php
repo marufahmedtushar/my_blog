@@ -58,7 +58,7 @@
                                             <form action="/userdelete/{{$user->id}}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('delete') }}
-                                        <button class="btn btn-danger">Delete </button>
+                                        <button class="btn btn-danger btn-sm">Delete </button>
                                             </form>
                                         </td>
                                     </tr>

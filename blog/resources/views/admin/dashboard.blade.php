@@ -19,9 +19,6 @@
                         {{$totalposts}}
                     </div>
                     <div class="card-footer">
-                        <div class="stats">
-                            <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-                        </div>
                     </div>
                 </div>
             </div>
@@ -35,9 +32,19 @@
                         {{$totalusers}}
                     </div>
                     <div class="card-footer">
-                        <div class="stats">
-                            <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <h4 class="card-title">Total Peoples</h4>
+                    </div>
+                    <div class="card-body">
+                        {{$totalpeoples}}
+                    </div>
+                    <div class="card-footer">
                     </div>
                 </div>
             </div>

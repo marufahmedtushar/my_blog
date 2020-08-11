@@ -40,6 +40,7 @@
                                     <label><input type="checkbox" name="access[]" value="Update">Update</label>
                                     <label><input type="checkbox" name="access[]" value="Delete">Delete</label>
                                     <label><input type="checkbox" name="access[]" value="Manage Admin">Manage Admin</label>
+                                    <label><input type="checkbox" name="access[]" value="Searching">Searching</label>
                                 </div>
 
 

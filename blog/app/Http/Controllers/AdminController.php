@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use App\User;
 use App\Post;
+use App\Contact;
 class AdminController extends Controller
 {
     public function dashboard()
@@ -17,10 +18,12 @@ class AdminController extends Controller
         
         $totalposts = Post::count();
         $totalusers = User::count();
+        $totalpeoples = Contact::count();
 
         return view('admin.dashboard',[
             'totalposts'=>$totalposts,
             'totalusers'=>$totalusers,
+            'totalpeoples'=>$totalpeoples,
         ]);
 
     }
@@ -147,6 +150,29 @@ class AdminController extends Controller
         $post = Post::find($id);
         $post->delete();
         return redirect('/posts')->with('status','Post is Deleted Sucessfully');
+
+    }
+
+    public function contactlist()
+    {
+        $contacts = Contact::all();
+        return view('admin.contact')->with('contacts',$contacts);
+
+    }
+
+    public function contactview($id){
+        $contact = Contact::findOrFail($id);
+        return view('admin.contactview')->with('contact',$contact);
+
+    }
+
+
+    public function contactdelete($id)
+    {
+
+        $contact = Contact::find($id);
+        $contact->delete();
+        return redirect('/contact')->with('status','Contact is Deleted Sucessfully');
 
     }
 
