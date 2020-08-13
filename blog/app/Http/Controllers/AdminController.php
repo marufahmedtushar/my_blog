@@ -7,6 +7,7 @@ use App\MyProjects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Post;
 use App\Contact;
@@ -29,7 +30,7 @@ class AdminController extends Controller
     }
 
     public function users(){
-        $users = User::all();
+        $users =  DB::table('users')-> orderBy('created_at', 'desc') -> paginate(5);
         return view('admin.users')->with('users',$users);
     }
 
@@ -49,7 +50,8 @@ class AdminController extends Controller
     }
 
     public function posts(){
-        $posts = Post::all();
+        // $posts = Post::all();
+        $posts =  DB::table('posts')-> orderBy('created_at', 'desc') -> paginate(5);
         return view('admin.posts')->with('posts',$posts);
 
     }
@@ -155,7 +157,7 @@ class AdminController extends Controller
 
     public function contactlist()
     {
-        $contacts = Contact::all();
+        $contacts =  DB::table('contact_list')-> orderBy('created_at', 'desc') -> paginate(5);
         return view('admin.contact')->with('contacts',$contacts);
 
     }

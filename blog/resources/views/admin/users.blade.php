@@ -68,6 +68,10 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <div class="container">
+                                 {{$users->links()}}
+
+                            </div>
                         </div>
                     </div>
 
