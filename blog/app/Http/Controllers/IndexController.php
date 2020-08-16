@@ -9,6 +9,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use App\Post;
 use App\Contact;
+use App\Comments;
 
 class IndexController extends Controller
 {
@@ -29,9 +30,10 @@ class IndexController extends Controller
  
         // return view('search')->with('search',$search);
         if(($q) != Post::where('title','LIKE','%'.$q.'%'))
-           return view('search')->with('search',$search);
+           
+           return view('search')->with('error','No Details found. Try to search again !')->with('search',$search);
         else 
-    	   return view('search')->with('error','No Details found. Try to search again !');
+    	   return view('search')->with('search',$search);
 }
 
 

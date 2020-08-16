@@ -7,12 +7,17 @@
 @section('content')
 
 
-    <div class="content">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <form action="/userroleupdate/{{$users->id}}" method="POST">
+    
+
+      <div class="content">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="title">Edit Profile</h5>
+              </div>
+              <div class="card-body">
+                <form action="/userroleupdate/{{$users->id}}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('PUT') }}
                             <div class="form-group">
@@ -41,6 +46,7 @@
                                     <label><input type="checkbox" name="access[]" value="Delete">Delete</label>
                                     <label><input type="checkbox" name="access[]" value="Manage Admin">Manage Admin</label>
                                     <label><input type="checkbox" name="access[]" value="Searching">Searching</label>
+                                    <label><input type="checkbox" name="access[]" value="Comment">Comment</label>
                                 </div>
 
 
@@ -50,13 +56,36 @@
 
                             </div>
                         </form>
-                    </div>
-
-
-                </div>
+              </div>
             </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card card-user">
+              <div class="image">
+                
+              </div>
+              <div class="card-body">
+                <div class="author">
+                  <a href="#">
+                    <i class="fas fa-user fa-3x"></i>
+                    <h5 class="title">{{$users->name}}</h5>
+                  </a>
+                  <p class="description">
+                    {{$users->usertype}}
+                  </p>
+                </div>
+                <p class="description text-center">
+                   <br>
+                   <br>
+                  
+                </p>
+              </div>
+              <hr>
+              
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
 
 
 

@@ -42,12 +42,9 @@
               Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
           -->
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                    CT
-                </a>
-                <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                    Creative Tim
-                </a>
+                <a href="/dashboard" class="simple-text logo-normal">
+               My Blog Admin
+            </a>
             </div>
 
         </div>
@@ -64,7 +61,8 @@
                             <span class="navbar-toggler-bar bar3"></span>
                         </button>
                     </div>
-                    <p class="navbar-brand">@yield('header')</p>
+                    <p class="navbar-brand">@yield('header')
+                    <a class="btn btn-success" href="/">Go To Blog Website </a></p>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-bar navbar-kebab"></span>

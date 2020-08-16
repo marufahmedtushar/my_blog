@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Post;
 use App\Contact;
+use App\Comments;
 class AdminController extends Controller
 {
     public function dashboard()
@@ -175,6 +176,20 @@ class AdminController extends Controller
         $contact = Contact::find($id);
         $contact->delete();
         return redirect('/contact')->with('status','Contact is Deleted Sucessfully');
+
+    }
+
+
+    public function comments()
+    {
+        $comments =  DB::table('comments')-> orderBy('created_at', 'desc') -> paginate(5);
+        return view('admin.comments')->with('comments',$comments);
+    }
+
+
+    public function commentview(Request $request,$id){
+        $comments = Comments::findOrFail($id);
+        return view('admin.commentview')->with('comments',$comments);
 
     }
 

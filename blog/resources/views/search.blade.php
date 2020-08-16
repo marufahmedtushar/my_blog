@@ -38,7 +38,7 @@
 <!--/ Nav Star /-->
 <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll" href="#page-top">BlasterUp</a>
+        <a class="navbar-brand js-scroll" href="/">MRF100 Blog Page</a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
                 aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span></span>
@@ -126,6 +126,13 @@
 
     <div class="container">
             @foreach($search as $searchpost)
+
+
+            <div class="widget-sidebar">
+            <h5 class="sidebar-title">Search Result for...{{$searchpost->title}}</h5>
+            <div class="sidebar-content">
+            </div>
+          </div>
 
            
                 <div class="post-box">

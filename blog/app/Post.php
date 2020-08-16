@@ -9,4 +9,9 @@ class Post extends Model
     protected $table ='posts';
     public $primaryKey = 'id';
     public $timestamps = true;
+
+    public function comments()
+    {
+    	return $this->hasMany('App\Comments');
+    }
 }

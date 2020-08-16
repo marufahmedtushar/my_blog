@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Input;
 Route::group(['middleware' => ['auth','user']],function() {
     Route::get('/','IndexController@index');
     Route::get('/home','HomeController@index');
+    Route::put('/comment/{post}','CommentController@commentstore');
 });
 Route::group(['middleware' => ['auth','admin']],function() {
 
@@ -37,6 +38,13 @@ Route::group(['middleware' => ['auth','admin']],function() {
     Route::get('/contact','AdminController@contactlist');
     Route::get('/contactview/{id}','AdminController@contactview');
     Route::delete('/contactdelete/{id}','AdminController@contactdelete');
+
+
+    Route::get('/comments','AdminController@comments');
+    Route::get('/comment/{id}','AdminController@commentview');
+
+
+
 
 
 });

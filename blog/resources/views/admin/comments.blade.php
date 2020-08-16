@@ -1,10 +1,10 @@
 @extends('layouts.master')
-@section('title','My Blog | Admin | Users')
+@section('title','My Blog | Admin | Comments')
 
 
 
 
-@section('header','List of Active Users')
+@section('header','List of All Comments')
 @section('content')
 
 
@@ -35,25 +35,17 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                 <th>#</th>
-                                <th>Name</th>
-                                <th>User Type</th>
-                                <th>Access</th>
+                                <th>Comment</th>
                                 </thead>
                                 <tbody>
-                                @foreach($users as $user)
+                                @foreach($comments as $comment)
                                     <tr>
-                                        <th scope="row">{{$user->id}}</th>
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->usertype}}</td>
-                                        <td>
-                                            @foreach( explode(",",$user->access) as $row)
-                                                <button class="btn btn-sm btn-secondary py-0 px-0">{{$row}}</button>
-                                            @endforeach
-                                        </td>
-                                        <td><a class="btn btn-success btn-sm" href="/userroleedit/{{$user->id}}">Edit</a></td>
+                                        <th scope="row">{{$comment->id}}</th>
+                                        <td>{{$comment->comment}}</td>
+                                        <td><a class="btn btn-success btn-sm" href="/comment/{{$comment->id}}">View Details</a></td>
 
                                         <td>
-                                            <form action="/userdelete/{{$user->id}}" method="POST">
+                                            <form action="" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('delete') }}
                                         <button class="btn btn-danger btn-sm">Delete </button>
@@ -67,7 +59,7 @@
                                 </tbody>
                             </table>
                             <div class="container">
-                                 {{$users->links()}}
+                                 {{$comments->links()}}
 
                             </div>
                         </div>

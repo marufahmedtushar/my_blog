@@ -42,11 +42,8 @@
           Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
       -->
         <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                CT
-            </a>
-            <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                Creative Tim
+            <a href="/dashboard" class="simple-text logo-normal">
+               My Blog Admin
             </a>
         </div>
         <div class="sidebar-wrapper" id="sidebar-wrapper">
@@ -77,36 +74,11 @@
                         <p>People's</p>
                     </a>
                 </li>
-                
-                <li>
-                    <a href="./map.html">
-                        <i class="now-ui-icons location_map-big"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="./notifications.html">
-                        <i class="now-ui-icons ui-1_bell-53"></i>
-                        <p>Notifications</p>
-                    </a>
-                </li>
-                
-                <li class="">
-                    <a href="">
-                        <i class="now-ui-icons design_bullet-list-67"></i>
-                        <p>Table List</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="./typography.html">
-                        <i class="now-ui-icons text_caps-small"></i>
-                        <p>Typography</p>
-                    </a>
-                </li>
-                <li class="active-pro">
-                    <a href="./upgrade.html">
-                        <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-                        <p>Upgrade to PRO</p>
+
+                <li class="{{ 'comments' == request()->path() ? 'active' : '' }}">
+                    <a href="/comments">
+                        <i class="fas fa-comment-dots"></i>
+                        <p>Comments of Posts</p>
                     </a>
                 </li>
             </ul>
@@ -125,7 +97,8 @@
                             <span class="navbar-toggler-bar bar3"></span>
                         </button>
                     </div>
-                    <p class="navbar-brand">@yield('header')</p>
+                    <p class="navbar-brand">@yield('header')
+                    <a class="btn btn-success" href="/">Go To Blog Website </a></p>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -189,8 +162,12 @@
         <div class="panel-header panel-header-sm">
         </div>
 
+        
+
         @yield('content')
 
+
+        
 
 
 

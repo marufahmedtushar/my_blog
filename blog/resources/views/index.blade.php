@@ -38,7 +38,7 @@
 <!--/ Nav Star /-->
 <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll" href="#page-top">BlasterUp</a>
+        <a class="navbar-brand js-scroll" href="#page-top">MRF100 Blog Page</a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
                 aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span></span>
@@ -232,53 +232,6 @@
                                 <a class="nav-link" href="/postsdetails/{{$posts->id}}">{{$posts->title}}</a>
                             </li>
                             @endforeach
-                        </ul>
-                    </div>
-                </div>
-                <div class="widget-sidebar">
-                    <h5 class="sidebar-title">Archives</h5>
-                    <div class="sidebar-content">
-                        <ul class="list-sidebar">
-                            <li>
-                                <a href="#">September, 2017.</a>
-                            </li>
-                            <li>
-                                <a href="#">April, 2017.</a>
-                            </li>
-                            <li>
-                                <a href="#">Nam quo autem exercitationem.</a>
-                            </li>
-                            <li>
-                                <a href="#">Atque placeat maiores nam quo autem</a>
-                            </li>
-                            <li>
-                                <a href="#">Nam quo autem exercitationem.</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="widget-sidebar widget-tags">
-                    <h5 class="sidebar-title">Tags</h5>
-                    <div class="sidebar-content">
-                        <ul>
-                            <li>
-                                <a href="#">Web.</a>
-                            </li>
-                            <li>
-                                <a href="#">Design.</a>
-                            </li>
-                            <li>
-                                <a href="#">Travel.</a>
-                            </li>
-                            <li>
-                                <a href="#">Photoshop</a>
-                            </li>
-                            <li>
-                                <a href="#">Corel Draw</a>
-                            </li>
-                            <li>
-                                <a href="#">JavaScript</a>
-                            </li>
                         </ul>
                     </div>
                 </div>

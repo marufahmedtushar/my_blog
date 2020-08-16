@@ -38,7 +38,7 @@
 <!--/ Nav Star /-->
 <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll" href="#page-top">BlasterUp</a>
+        <a class="navbar-brand js-scroll" href="/">MRF100 Blog Page</a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
                 aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span></span>
@@ -55,11 +55,11 @@
                     <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="btn btn-primary" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="btn btn-primary" href="/login-new">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="btn btn-primary" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="btn btn-primary" href="/register-new">{{ __('Register') }}</a>
                         </li>
                     @endif
                 @else
@@ -130,12 +130,8 @@
                                     <h6 class="far fa-clock">{{$post->created_at}}</h6>
                                 </li>
                                 <li>
-                                    <span class="ion-pricetag"></span>
-                                    <a href="#">Web Design</a>
-                                </li>
-                                <li>
                                     <span class="ion-chatbox"></span>
-                                    <a href="#">14</a>
+                                    <a href="#">{{ $post->comments()->count() }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -154,73 +150,64 @@
 
                     </div>
 
+
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
                 <div class="box-comments">
                     <div class="title-box-2">
-                        <h4 class="title-comments title-left">Comments (34)</h4>
+                        <h4 class="title-comments title-left">Comments({{ $post->comments()->count() }})</h4>
                     </div>
+                </div>
+
+                 @foreach($post->comments as $comment)
+
+                <div class="box-comments">
                     <ul class="list-comments">
                         <li>
-                            <div class="comment-avatar">
-                                <img src="img/testimonial-2.jpg" alt="">
-                            </div>
                             <div class="comment-details">
-                                <h4 class="comment-author">Oliver Colmenares</h4>
-                                <span>18 Sep 2017</span>
+                                <h4 class="comment-author">{{$comment->user->name}}</h4>
+                                <span>{{$comment->created_at}}</span>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
-                                    ipsam temporibus maiores
-                                    quae natus libero optio, at qui beatae ducimus placeat debitis voluptates amet corporis.
+                                    {{$comment->comment}}
                                 </p>
-                                <a href="3">Reply</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="comment-avatar">
-                                <img src="img/testimonial-4.jpg" alt="">
-                            </div>
-                            <div class="comment-details">
-                                <h4 class="comment-author">Carmen Vegas</h4>
-                                <span>18 Sep 2017</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
-                                    ipsam temporibus maiores
-                                    quae natus libero optio, at qui beatae ducimus placeat debitis voluptates amet corporis,
-                                    veritatis deserunt.
-                                </p>
-                                <a href="3">Reply</a>
-                            </div>
-                        </li>
-                        <li class="comment-children">
-                            <div class="comment-avatar">
-                                <img src="img/testimonial-2.jpg" alt="">
-                            </div>
-                            <div class="comment-details">
-                                <h4 class="comment-author">Oliver Colmenares</h4>
-                                <span>18 Sep 2017</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
-                                    ipsam temporibus maiores
-                                    quae.
-                                </p>
-                                <a href="3">Reply</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="comment-avatar">
-                                <img src="img/testimonial-2.jpg" alt="">
-                            </div>
-                            <div class="comment-details">
-                                <h4 class="comment-author">Oliver Colmenares</h4>
-                                <span>18 Sep 2017</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
-                                    ipsam temporibus maiores
-                                    quae natus libero optio.
-                                </p>
-                                <a href="3">Reply</a>
+                                
                             </div>
                         </li>
                     </ul>
+                </div>
+
+                @endforeach
+
+                <div class="box-comments">
+                    
+                            <div class="comment-details">
+                                <form action="/comment/{{$post->id}}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('PUT') }}
+                                
+                                                <div class="form-group">
+                                                    <textarea class="form-control" id="msg" name='comment' rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
+                                                    <div class="validation"></div>
+                                                </div>
+                                            
+                                            
+                                                <button type="submit" class="button button-a button-big button-rouded">Comment</button>
+                                            
+
+                                </form>
+                                
+                            </div>
+                        
                 </div>
             </div>
             <div class="col-md-4">
@@ -228,7 +215,7 @@
                     <h5 class="sidebar-title">Search</h5>
                     <div class="sidebar-content">
                         <form action="/search" method="get" role="search">
-    {{ csrf_field() }}
+                         {{ csrf_field() }}
                             <div class="input-group">
                                 <input type="text" name="q" class="form-control" placeholder="Search for..." aria-label="Search for...">
                                 <span class="input-group-btn">
@@ -238,53 +225,6 @@
                   </span>
                             </div>
                         </form>
-                    </div>
-                </div>
-                <div class="widget-sidebar">
-                    <h5 class="sidebar-title">Archives</h5>
-                    <div class="sidebar-content">
-                        <ul class="list-sidebar">
-                            <li>
-                                <a href="#">September, 2017.</a>
-                            </li>
-                            <li>
-                                <a href="#">April, 2017.</a>
-                            </li>
-                            <li>
-                                <a href="#">Nam quo autem exercitationem.</a>
-                            </li>
-                            <li>
-                                <a href="#">Atque placeat maiores nam quo autem</a>
-                            </li>
-                            <li>
-                                <a href="#">Nam quo autem exercitationem.</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="widget-sidebar widget-tags">
-                    <h5 class="sidebar-title">Tags</h5>
-                    <div class="sidebar-content">
-                        <ul>
-                            <li>
-                                <a href="#">Web.</a>
-                            </li>
-                            <li>
-                                <a href="#">Design.</a>
-                            </li>
-                            <li>
-                                <a href="#">Travel.</a>
-                            </li>
-                            <li>
-                                <a href="#">Photoshop</a>
-                            </li>
-                            <li>
-                                <a href="#">Corel Draw</a>
-                            </li>
-                            <li>
-                                <a href="#">JavaScript</a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>

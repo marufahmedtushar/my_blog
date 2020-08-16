@@ -45,6 +45,7 @@
                                         <th scope="row">{{$post->id}}</th>
                                         <td>{{$post->title}}</td>
                                         <td>{{$post->created_at}}</td>
+                                        
 
                                         <td><a class="btn btn-success btn-sm" href="/postedit/{{$post->id}}/edit">Edit</a></td>
 
@@ -52,8 +53,8 @@
                                         {{ csrf_field() }}
                                         {{ method_field('delete') }}
                                         <button class="btn btn-danger btn-sm">Delete </button>
-                                            </form>
-                                        </tr>
+                                            </form></td>
+                                    </tr>
 
                                 @endforeach
                                 
