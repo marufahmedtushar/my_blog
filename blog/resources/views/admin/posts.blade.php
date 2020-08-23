@@ -35,7 +35,6 @@
                                 <thead class=" text-primary">
                                 <th>#</th>
                                 <th>Title</th>
-                                <th>Created at</th>
                                 </thead>
                                 <tbody>
 
@@ -43,8 +42,8 @@
 
                                     <tr>
                                         <th scope="row">{{$post->id}}</th>
-                                        <td>{{$post->title}}</td>
-                                        <td>{{$post->created_at}}</td>
+                                        <td>{{ Str::limit($post->title, 20, '...')}}</td>
+                                        <td><a class="btn btn-success btn-sm" href="/postdetails/{{$post->id}}">Details of Post</a></td>
                                         
 
                                         <td><a class="btn btn-success btn-sm" href="/postedit/{{$post->id}}/edit">Edit</a></td>

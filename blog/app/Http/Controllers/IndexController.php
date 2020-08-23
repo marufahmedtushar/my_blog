@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use App\Post;
+use App\Newpost;
 use App\Contact;
 use App\Comments;
+use App\Newcomments;
 
 class IndexController extends Controller
 {

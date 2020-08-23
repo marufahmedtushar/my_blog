@@ -50,7 +50,7 @@
             <ul class="nav">
                 <li class="{{ 'dashboard' == request()->path() ? 'active' : '' }}">
                     <a class="" href="/dashboard">
-                        <i class="now-ui-icons design_app"></i>
+                        <i class="fas fa-cube"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
@@ -63,7 +63,7 @@
 
                 <li class="{{ 'users' == request()->path() ? 'active' : '' }}">
                     <a href="/users">
-                        <i class="now-ui-icons users_single-02"></i>
+                        <i class="fas fa-user"></i>
                         <p>User's</p>
                     </a>
                 </li>

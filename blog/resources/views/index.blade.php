@@ -149,9 +149,7 @@
 
 
 
-                        <blockquote class="blockquote">
-                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        </blockquote>
+                        
 
                     </div>
 
@@ -210,7 +208,7 @@
                     <h5 class="sidebar-title">Search</h5>
                     <div class="sidebar-content">
                         <form action="/search" method="get" role="search">
-    {{ csrf_field() }}
+                              {{ csrf_field() }}
                             <div class="input-group">
                                 <input type="text" name="q" class="form-control input-group-btn" placeholder="Search for..." aria-label="Search for...">
                                 <span class="input-group-btn">

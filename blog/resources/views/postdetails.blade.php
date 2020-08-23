@@ -142,9 +142,7 @@
 
 
 
-                            <blockquote class="blockquote">
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                            </blockquote>
+                            
 
                         </div>
 
@@ -176,7 +174,7 @@
                         <li>
                             <div class="comment-details">
                                 <h4 class="comment-author">{{$comment->user->name}}</h4>
-                                <span>{{$comment->created_at}}</span>
+                                <span>{{$comment->created_at->diffForHumans()}}</span>
                                 <p>
                                     {{$comment->comment}}
                                 </p>

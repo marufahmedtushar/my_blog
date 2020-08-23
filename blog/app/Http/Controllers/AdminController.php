@@ -8,9 +8,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Newpost;
 use App\Post;
 use App\Contact;
+use App\Newcomments;
 use App\Comments;
 class AdminController extends Controller
 {
@@ -21,11 +24,13 @@ class AdminController extends Controller
         $totalposts = Post::count();
         $totalusers = User::count();
         $totalpeoples = Contact::count();
+        $totalcomments = Comments::count();
 
         return view('admin.dashboard',[
             'totalposts'=>$totalposts,
             'totalusers'=>$totalusers,
             'totalpeoples'=>$totalpeoples,
+            'totalcomments'=>$totalcomments,
         ]);
 
     }
@@ -66,6 +71,12 @@ class AdminController extends Controller
 
     }
 
+    public function postdetails($id){
+        $post = Post::findOrFail($id);
+        return view('admin.postdetails')->with('post',$post);
+
+    }
+
     public function store(Request $request){
 
         $this->validate($request,[
@@ -95,6 +106,7 @@ class AdminController extends Controller
 
 
         $post = new Post;
+        // $post-> user_id = Auth::id();
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->cover_image = $fileNameToStore;
@@ -190,6 +202,16 @@ class AdminController extends Controller
     public function commentview(Request $request,$id){
         $comments = Comments::findOrFail($id);
         return view('admin.commentview')->with('comments',$comments);
+
+    }
+
+
+    public function commentdelete($id)
+    {
+
+        $comment = Comments::find($id);
+        $comment->delete();
+        return redirect('/comments')->with('status','Comment is Deleted Sucessfully');
 
     }
 

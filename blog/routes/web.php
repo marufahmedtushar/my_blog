@@ -23,17 +23,21 @@ Route::group(['middleware' => ['auth','user']],function() {
 Route::group(['middleware' => ['auth','admin']],function() {
 
     Route::get('/dashboard','AdminController@dashboard');
+
     Route::get('/users','AdminController@users');
+
     Route::get('/posts','AdminController@posts');
     Route::get('/createposts','AdminController@createposts');
     Route::put('/postscreate','AdminController@store');
     Route::put('/postsupdate/{id}','AdminController@save');
     Route::get('/postedit/{id}/edit','AdminController@postedit');
+    Route::get('/postdetails/{id}','AdminController@postdetails');
+    Route::delete('/postdelete/{id}','AdminController@postdelete');
+
     Route::get('/userroleedit/{id}','AdminController@userroleedit');
     Route::put('/userroleupdate/{id}','AdminController@userroleupdate');
-
     Route::delete('/userdelete/{id}','AdminController@userdelete');
-    Route::delete('/postdelete/{id}','AdminController@postdelete');
+
 
     Route::get('/contact','AdminController@contactlist');
     Route::get('/contactview/{id}','AdminController@contactview');
@@ -42,6 +46,7 @@ Route::group(['middleware' => ['auth','admin']],function() {
 
     Route::get('/comments','AdminController@comments');
     Route::get('/comment/{id}','AdminController@commentview');
+    Route::delete('/comentdelete/{id}','AdminController@commentdelete');
 
 
 

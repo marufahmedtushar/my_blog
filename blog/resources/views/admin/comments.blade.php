@@ -45,7 +45,7 @@
                                         <td><a class="btn btn-success btn-sm" href="/comment/{{$comment->id}}">View Details</a></td>
 
                                         <td>
-                                            <form action="" method="POST">
+                                            <form action="/comentdelete/{{$comment->id}}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('delete') }}
                                         <button class="btn btn-danger btn-sm">Delete </button>
