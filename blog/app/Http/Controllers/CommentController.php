@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Comments;
+use App\Comments1;
 class CommentController extends Controller
 {
    public function commentstore(Request $request,$post)
@@ -14,9 +14,9 @@ class CommentController extends Controller
     ]);
 
 
-    $comment = new Comments();
+    $comment = new Comments1();
     $comment-> user_id = Auth::id();
-    $comment-> post_id = $post;
+    $comment-> post2_id = $post;
     $comment->comment = $request->comment;
     $comment->save();
 

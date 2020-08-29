@@ -7,31 +7,30 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
-use App\Post;
-use App\Newpost;
+use App\Post2;
 use App\Contact;
-use App\Comments;
-use App\Newcomments;
+use App\Comments1;
+
 
 class IndexController extends Controller
 {
     public function index(){
 //        $post =  Post::orderBy('created_at','desc')->paginate(2);
-        $post =  DB::table('posts')-> orderBy('created_at', 'desc') -> paginate(4);
+        $post =  DB::table('post2s')-> orderBy('created_at', 'desc') -> paginate(4);
         return view('index')->with('post',$post);
     }
 
     public function postsdetails($id){
-        $post = Post::find($id);
+        $post = Post2::find($id);
         return view('postdetails')->with('post',$post);
     }
 
     public function search(){
     $q = $_GET['q'];
-    $search = Post::where('title','LIKE','%'.$q.'%')->get();
+    $search = Post2::where('title','LIKE','%'.$q.'%')->get();
  
         // return view('search')->with('search',$search);
-        if(($q) != Post::where('title','LIKE','%'.$q.'%'))
+        if(($q) != Post2::where('title','LIKE','%'.$q.'%'))
            
            return view('search')->with('error','No Details found. Try to search again !')->with('search',$search);
         else 

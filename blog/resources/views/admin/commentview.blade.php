@@ -33,7 +33,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Post Title</label>
-                        <input type="text" class="form-control" placeholder="Home Address" value="{{$comments->post->title}}">
+                        <input type="text" class="form-control" placeholder="Home Address" value="{{$comments->post2->title}}">
                       </div>
                     </div>
                   </div>
@@ -41,7 +41,7 @@
                     <div class="col-md-4 pr-1">
                       <div class="form-group">
                         <label>Post Id</label>
-                        <input type="text" class="form-control" placeholder="City" value="{{$comments->post->id}}">
+                        <input type="text" class="form-control" placeholder="City" value="{{$comments->post2->id}}">
                       </div>
                     </div>
                     <div class="col-md-4 px-1">
@@ -75,14 +75,14 @@
           <div class="col-md-4">
             <div class="card">
               <div class="image">
-                <img src="/storage/cover_images/{{$comments->post->cover_image}}" alt="...">
+                <img src="/storage/cover_images/{{$comments->post2->cover_image}}" alt="...">
               </div>
               <div class="card-body">
                 <div class="author">
                  
                 </div>
                 <p class=" text-center">
-                  {{$comments->post->body}}
+                  {{$comments->post2->body}}
                 </p>
               </div>
               <hr>

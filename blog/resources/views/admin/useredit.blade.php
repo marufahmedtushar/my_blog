@@ -73,6 +73,9 @@
                   <p class="description">
                     {{$users->usertype}}
                   </p>
+                  <p class="description">
+                    {{$users->access}}
+                  </p>
                 </div>
                 <p class="description text-center">
                    <br>

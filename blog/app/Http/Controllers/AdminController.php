@@ -10,21 +10,19 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use App\Newpost;
-use App\Post;
+use App\Post2;
 use App\Contact;
-use App\Newcomments;
-use App\Comments;
+use App\Comments1;
 class AdminController extends Controller
 {
     public function dashboard()
     {
 
         
-        $totalposts = Post::count();
+        $totalposts = Post2::count();
         $totalusers = User::count();
         $totalpeoples = Contact::count();
-        $totalcomments = Comments::count();
+        $totalcomments = Comments1::count();
 
         return view('admin.dashboard',[
             'totalposts'=>$totalposts,
@@ -57,7 +55,7 @@ class AdminController extends Controller
 
     public function posts(){
         // $posts = Post::all();
-        $posts =  DB::table('posts')-> orderBy('created_at', 'desc') -> paginate(5);
+        $posts =  DB::table('post2s')-> orderBy('created_at', 'desc') -> paginate(5);
         return view('admin.posts')->with('posts',$posts);
 
     }
@@ -66,13 +64,13 @@ class AdminController extends Controller
     }
 
     public function postedit($id){
-        $post = Post::findOrFail($id);
+        $post = Post2::findOrFail($id);
         return view('admin.postedit')->with('post',$post);
 
     }
 
     public function postdetails($id){
-        $post = Post::findOrFail($id);
+        $post = Post2::findOrFail($id);
         return view('admin.postdetails')->with('post',$post);
 
     }
@@ -105,8 +103,8 @@ class AdminController extends Controller
         }
 
 
-        $post = new Post;
-        // $post-> user_id = Auth::id();
+        $post = new Post2;
+        $post-> user_id = Auth::id();
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->cover_image = $fileNameToStore;
@@ -139,7 +137,7 @@ class AdminController extends Controller
         }
 
 
-        $post = Post::findOrFail($id);
+        $post = Post2::findOrFail($id);
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         if($request->hasFile('cover_image')){
@@ -162,7 +160,7 @@ class AdminController extends Controller
     public function postdelete($id)
     {
 
-        $post = Post::find($id);
+        $post = Post2::find($id);
         $post->delete();
         return redirect('/posts')->with('status','Post is Deleted Sucessfully');
 
@@ -194,13 +192,13 @@ class AdminController extends Controller
 
     public function comments()
     {
-        $comments =  DB::table('comments')-> orderBy('created_at', 'desc') -> paginate(5);
+        $comments =  DB::table('comments1s')-> orderBy('created_at', 'desc') -> paginate(5);
         return view('admin.comments')->with('comments',$comments);
     }
 
 
     public function commentview(Request $request,$id){
-        $comments = Comments::findOrFail($id);
+        $comments = Comments1::findOrFail($id);
         return view('admin.commentview')->with('comments',$comments);
 
     }
@@ -209,7 +207,7 @@ class AdminController extends Controller
     public function commentdelete($id)
     {
 
-        $comment = Comments::find($id);
+        $comment = Comments1::find($id);
         $comment->delete();
         return redirect('/comments')->with('status','Comment is Deleted Sucessfully');
 
