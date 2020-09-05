@@ -10,31 +10,40 @@ use Illuminate\Support\Facades\DB;
 use App\Post2;
 use App\Contact;
 use App\Comments1;
+use App\Tag;
 
 
 class IndexController extends Controller
 {
     public function index(){
 //        $post =  Post::orderBy('created_at','desc')->paginate(2);
-        $post =  DB::table('post2s')-> orderBy('created_at', 'desc') -> paginate(4);
-        return view('index')->with('post',$post);
+    $post =  DB::table('post2s')-> orderBy('created_at', 'desc') -> paginate(4);
+    $tag = Tag::all();
+        return view('index')->with('post',$post)->with('tag',$tag);
     }
 
     public function postsdetails($id){
         $post = Post2::find($id);
-        return view('postdetails')->with('post',$post);
+        $tags = Tag::all();
+        return view('postdetails')->with('post',$post)->with('tags',$tags);
     }
 
     public function search(){
+    
     $q = $_GET['q'];
-    $search = Post2::where('title','LIKE','%'.$q.'%')->get();
+    
  
-        // return view('search')->with('search',$search);
-        if(($q) != Post2::where('title','LIKE','%'.$q.'%'))
+        
+        if($q !=""){
+
+
+            $search = Post2::where('title','LIKE','%'.$q.'%')->get();
+            return view('search')->with('search',$search);
+
+
+        }
            
-           return view('search')->with('error','No Details found. Try to search again !')->with('search',$search);
-        else 
-    	   return view('search')->with('search',$search);
+        
 }
 
 
@@ -52,6 +61,12 @@ public function contact(Request $request){
         $contact->msg = $request->input('msg');
         $contact->save();
         return redirect('/')->with('status','We will contact with you soon..');
+    }
+
+
+    public function tagdetails($id){
+        $tag = Tag::find($id);
+        return view('tagdetails')->with('tag',$tag);
     }
    
 }

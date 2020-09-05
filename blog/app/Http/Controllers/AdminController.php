@@ -13,6 +13,7 @@ use App\User;
 use App\Post2;
 use App\Contact;
 use App\Comments1;
+use App\Tag;
 class AdminController extends Controller
 {
     public function dashboard()
@@ -23,12 +24,14 @@ class AdminController extends Controller
         $totalusers = User::count();
         $totalpeoples = Contact::count();
         $totalcomments = Comments1::count();
+        $totaltags = Tag::count();
 
         return view('admin.dashboard',[
             'totalposts'=>$totalposts,
             'totalusers'=>$totalusers,
             'totalpeoples'=>$totalpeoples,
             'totalcomments'=>$totalcomments,
+            'totaltags'=>$totaltags,
         ]);
 
     }
@@ -60,18 +63,21 @@ class AdminController extends Controller
 
     }
     public function createposts(){
-        return view('admin.createposts');
+        $tag = Tag::all();
+        return view('admin.createposts')->with('tag',$tag);
     }
 
     public function postedit($id){
         $post = Post2::findOrFail($id);
-        return view('admin.postedit')->with('post',$post);
+        $tags = Tag::all();
+        return view('admin.postedit')->with('post',$post)->with('tags',$tags);
 
     }
 
     public function postdetails($id){
         $post = Post2::findOrFail($id);
-        return view('admin.postdetails')->with('post',$post);
+        $tags = Tag::all();
+        return view('admin.postdetails')->with('post',$post)->with('tags',$tags);
 
     }
 
@@ -80,7 +86,8 @@ class AdminController extends Controller
         $this->validate($request,[
             'title' => 'required',
             'body' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:1999',
+            'tags' => 'required'
         ]);
 
         //file upload
@@ -103,20 +110,24 @@ class AdminController extends Controller
         }
 
 
-        $post = new Post2;
+        $post = new Post2();
         $post-> user_id = Auth::id();
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        // $post->tags = implode(",", $request->tags);
         $post->cover_image = $fileNameToStore;
         $post->save();
+
+        $post->tags()->attach($request->tags);
         return redirect('/posts')->with('status','post created');
     }
 
-    public function save(Request $request,$id){
+    public function save(Request $request,Post2 $post){
 
         $this->validate($request,[
             'title' => 'required',
             'body' => 'required',
+            'tag' => 'required',
         ]);
 
         //file upload
@@ -137,13 +148,18 @@ class AdminController extends Controller
         }
 
 
-        $post = Post2::findOrFail($id);
+        $post-> user_id = Auth::id();
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+
         if($request->hasFile('cover_image')){
             $post->cover_image = $fileNameToStore;
         }
+
+       
         $post->save();
+
+        $post->tags()->sync($request->tag);
         return redirect('/posts')->with('status','post updated');
     }
 
@@ -212,6 +228,45 @@ class AdminController extends Controller
         return redirect('/comments')->with('status','Comment is Deleted Sucessfully');
 
     }
+
+
+    public function tags(){
+        $tags =  DB::table('tags')-> orderBy('created_at', 'desc') -> paginate(5);
+        return view('admin.tags')->with('tags',$tags);
+    }
+
+
+
+    public function createtags(){
+        return view('admin.createtags');
+    }
+
+
+    public function tagsstore(Request $request){
+
+        $this->validate($request,[
+            'name' => 'required'
+        ]);
+
+
+        $tags = new Tag;
+        $tags->name = $request->input('name');
+        $tags->save();
+        return redirect('/tags')->with('status','Tags created');
+    }
+
+
+
+    public function tagdelete($id)
+    {
+
+        $tag = Tag::find($id);
+        $tag->delete();
+        return redirect('/tags')->with('status','Tag is Deleted Sucessfully');
+
+    }
+
+
 
 
 

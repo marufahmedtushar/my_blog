@@ -129,6 +129,31 @@
             </div>
 
 
+            <div class="col-lg-4">
+                <div class="card card-chart">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card-header">
+                               <h4 class="card-title">Total Tags</h4>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card-header">
+                                <i class="fas fa-tags fa-3x" style="color:#F96332;"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        {{$totaltags}}
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </div>
+
+
        
 
 

@@ -61,6 +61,13 @@
                     </a>
                 </li>
 
+                <li class="{{ 'tags' == request()->path() ? 'active' : '' }}">
+                    <a href="./tags">
+                        <i class="fas fa-tags"></i>
+                        <p>Tags</p>
+                    </a>
+                </li>
+
                 <li class="{{ 'users' == request()->path() ? 'active' : '' }}">
                     <a href="/users">
                         <i class="fas fa-user"></i>
@@ -78,7 +85,7 @@
                 <li class="{{ 'comments' == request()->path() ? 'active' : '' }}">
                     <a href="/comments">
                         <i class="fas fa-comment-dots"></i>
-                        <p>Comments of Posts</p>
+                        <p>Comments</p>
                     </a>
                 </li>
             </ul>
@@ -98,7 +105,7 @@
                         </button>
                     </div>
                     <p class="navbar-brand">@yield('header')
-                    <a class="btn btn-success" href="/">Go To Blog Website </a></p>
+                    <a class="btn btn-success" href="/"><i class="fas fa-running"></i><span> Go To Blog Website</span></a></p>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-bar navbar-kebab"></span>

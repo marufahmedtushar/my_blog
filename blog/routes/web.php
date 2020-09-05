@@ -26,10 +26,16 @@ Route::group(['middleware' => ['auth','admin']],function() {
 
     Route::get('/users','AdminController@users');
 
+
+    Route::get('/tags','AdminController@tags');
+    Route::get('/createtags','AdminController@createtags');
+    Route::put('/tagscreate','AdminController@tagsstore');
+    Route::delete('/tagdelete/{id}','AdminController@tagdelete');
+
     Route::get('/posts','AdminController@posts');
     Route::get('/createposts','AdminController@createposts');
     Route::put('/postscreate','AdminController@store');
-    Route::put('/postsupdate/{id}','AdminController@save');
+    Route::put('/postsupdate/{post}','AdminController@save');
     Route::get('/postedit/{id}/edit','AdminController@postedit');
     Route::get('/postdetails/{id}','AdminController@postdetails');
     Route::delete('/postdelete/{id}','AdminController@postdelete');
@@ -58,6 +64,7 @@ Auth::routes();
 
 Route::get('/','IndexController@index');
 Route::get('/postsdetails/{id}','IndexController@postsdetails');
+ Route::get('/tagdetails/{id}','IndexController@tagdetails');
 Route::get('/searchpostdetails/{id}','IndexController@postsdetails');
 Route::get('/register-new', function () {
     return view('newregister');

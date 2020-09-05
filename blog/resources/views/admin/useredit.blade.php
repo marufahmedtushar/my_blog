@@ -37,7 +37,7 @@
                                 </select>
                             </div>
 
-                                <div class="form-group">
+            <div class="form-group">
                                     <label><strong>Access :</strong></label><br>
                                     <label><input type="checkbox" name="access[]" value="Contact">Contact</label>
                                     <label><input type="checkbox" name="access[]" value="Blog">Blog</label>
@@ -47,7 +47,12 @@
                                     <label><input type="checkbox" name="access[]" value="Manage Admin">Manage Admin</label>
                                     <label><input type="checkbox" name="access[]" value="Searching">Searching</label>
                                     <label><input type="checkbox" name="access[]" value="Comment">Comment</label>
-                                </div>
+
+                                    
+                                    
+            </div>
+
+                                
 
 
                             <div class="form-group">
@@ -71,10 +76,10 @@
                     <h5 class="title">{{$users->name}}</h5>
                   </a>
                   <p class="description">
-                    {{$users->usertype}}
+                    as:-{{$users->usertype}}
                   </p>
                   <p class="description">
-                    {{$users->access}}
+                    access:-{{$users->access}}
                   </p>
                 </div>
                 <p class="description text-center">

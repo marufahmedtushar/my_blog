@@ -26,10 +26,19 @@
                             </div>
 
                             <div class="form-group">
+                                    <label><strong>Select one tag :</strong></label><br>
+                                    @foreach($tag as $tags)
+                                    <label><input type="checkbox" name="tags[]" value="{{$tags->id}}">{{$tags->name}}</label>
+                                    @endforeach
+                                </div>
+
+                            <div class="form-group">
                                 <label>Upload an image : </label>
                                 <input type="file" name="cover_image" style="border:3px solid #CDCCE7;border-radius:10px;padding:5px;">
 
                             </div>
+
+
 
 
 

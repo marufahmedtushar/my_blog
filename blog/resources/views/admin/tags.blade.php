@@ -1,10 +1,10 @@
 @extends('layouts.master')
-@section('title','My Blog | Admin | Posts')
+@section('title','My Blog | Admin | Tags')
 
 
 
 
-@section('header','List of Posts')
+@section('header','List of Tags')
 @section('content')
 
 
@@ -16,7 +16,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header ">
-                        <a class="btn btn-success" href="/createposts"><i class="fas fa-blog"></i><span> Create Posts</span></a>
+                        <a class="btn btn-success" href="/createtags"><i class="fas fa-tags"></i><span> Create Tags</span></a>
                     </div>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -38,17 +38,17 @@
                                 </thead>
                                 <tbody>
 
-                                @foreach($posts as $post)
+                                @foreach($tags as $tag)
 
                                     <tr>
-                                        <th scope="row">{{$post->id}}</th>
-                                        <td>{{ Str::limit($post->title, 20, '...')}}</td>
-                                        <td><a class="btn btn-success btn-sm" href="/postdetails/{{$post->id}}">Details of Post</a></td>
+                                        <th scope="row">{{$tag->id}}</th>
+                                        <td>{{$tag->name}}</td>
+                                        
                                         
 
-                                        <td><a class="btn btn-success btn-sm" href="/postedit/{{$post->id}}/edit">Edit</a></td>
+                                        
 
-                                        <td><form action="/postdelete/{{$post->id}}" method="POST">
+                                        <td><form action="/tagdelete/{{$tag->id}}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('delete') }}
                                         <button class="btn btn-danger btn-sm">Delete </button>
@@ -62,7 +62,7 @@
                                 </tbody>
                             </table>
                             <div class="container">
-                                 {{$posts->links()}}
+                                 {{$tags->links()}}
 
                             </div>
                         </div>

@@ -62,7 +62,7 @@
                         </button>
                     </div>
                     <p class="navbar-brand">@yield('header')
-                    <a class="btn btn-success" href="/">Go To Blog Website </a></p>
+                    <a class="btn btn-success" href="/"><i class="fas fa-running"></i><span> Go To Blog Website</span></a></p>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-bar navbar-kebab"></span>

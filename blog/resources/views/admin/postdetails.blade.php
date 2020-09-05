@@ -47,10 +47,11 @@
                     </div>
                     <div class="col-md-4 px-1">
                       <div class="form-group">
-                        <label>Comment Creared At</label>
+                        <label>Post Creared At</label>
                         <input type="text" class="form-control" placeholder="Country" value="{{$post->created_at->diffForHumans()}}">
                       </div>
                     </div>
+                    
                     
                   </div>
                   <div class="row">
@@ -77,6 +78,21 @@
             <div class="card">
               <div class="image">
                 <img src="/storage/cover_images/{{$post->cover_image}}" alt="...">
+              </div>
+
+              <div class="card-body">
+                <div class="author">
+                 
+                </div>
+                <p class=" text-center">
+                      <div class="form-group">
+                        <label>Tags</label>
+                        @foreach($post->tags as $tag)
+                                    <button class="btn btn-success btn-sm">{{$tag->name}}</button>
+                                    @endforeach
+
+                      </div>
+                </p>
               </div>
               
               
