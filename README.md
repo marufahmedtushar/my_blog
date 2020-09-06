@@ -9,7 +9,7 @@
 ![Screenshot_2020-09-06 My Blog Tag Details](https://user-images.githubusercontent.com/53092408/92326694-d1356a00-f075-11ea-9eca-cf8af4854ff1.png)
 ![Screenshot_2020-09-06 My Blog Tag Details(1)](https://user-images.githubusercontent.com/53092408/92326697-d4305a80-f075-11ea-9283-75ba847b228f.png)
 ![Screenshot_2020-09-06 My Blog Search Result](https://user-images.githubusercontent.com/53092408/92326703-d7c3e180-f075-11ea-917a-e92f584c018e.png)
-![Screenshot_2020-09-06 My Blog Search Result(1)](https://user-images.githubusercontent.com/53092408/92326709-deeaef80-f075-11ea-88f6-3664b6a642cf.png)
+![Screenshot_2020-09-06 My Blog Search Result(2)](https://user-images.githubusercontent.com/53092408/92326803-a697e100-f076-11ea-9d0d-1a9739a23b3d.png)
 # Admin:
 ![Screenshot_2020-09-06 My Blog Admin Dashboard](https://user-images.githubusercontent.com/53092408/92326548-c1695600-f074-11ea-97c9-d5c02ddc5cbe.png)
 ![Screenshot_2020-09-06 My Blog Admin Posts](https://user-images.githubusercontent.com/53092408/92326563-d47c2600-f074-11ea-894e-f5b19c70721a.png)
