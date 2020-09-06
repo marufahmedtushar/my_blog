@@ -39,11 +39,11 @@
   <section id="service" class="services-mf route">
     <div class="container">
         <div class="row">
-            @foreach($search as $searchpost)
+           
         <div class="col-sm-12">
           <div class="title-box text-center">
             <h3 class="title-a">
-              Search Result for...{{$searchpost->title}}
+              Search Result for...{{ request()->input('q') }}
             </h3>
             <p class="subtitle-a">
             </p>
@@ -52,7 +52,7 @@
         </div>
       </div>
       <div class="row">
-        
+         @foreach($search as $searchpost)
         <div class="col-md-4">
           <div class="service-box">
             <div class="service-ico">
