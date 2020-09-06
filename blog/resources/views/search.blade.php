@@ -93,6 +93,14 @@
         <!-- ============================================================== -->
         <div class="error-box">
             <div class="error-body text-center">
+                <div class="title-box text-center">
+            <h3 class="title-a">
+              Search Result for...{{ request()->input('q') }}
+            </h3>
+            <p class="subtitle-a">
+            </p>
+            <div class="line-mf"></div>
+          </div>
                 <h1 class="error-title text-danger">404</h1>
                 <h3 class="text-uppercase error-subtitle">ITEM NOT FOUND !</h3>
                 <p><img src="{{ asset('img/404.jpg')}}" class="img-fluid" alt=""></p>
